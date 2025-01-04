@@ -1,20 +1,30 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// I will remove this styling sheet or rework it
+// import './App.css'
+import Notes from './components/notes';
+import ContactPage from './pages/Contact';
+import Navbar from './components/navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/Landing';
+import ProjectsPage from './pages/Projects';
+import WritingPage from './pages/Writing';
+import TutoringPage from './pages/Tutoring';
+import AboutPage from './pages/About';
 
 function App() {
   return (
-    <>
-      <h1>Checklist for Blog</h1>
-      <ul style={{ textAlign: 'left' }}>
-        <li>Landing Page to point to my work for clients</li>
-        <li>Software Engineering Project Page</li>
-        <li>Blog Page to direct out to Medium and guest blog posts</li>
-        <li>Tutoring / Teaching Page</li>
-        <li>About Me Page to give some background</li>
-        <li>Contact Page to </li>
-      </ul>
-    </>
+    <Router>
+      <div style={{ width: '100vw', height: '100vh' }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" Component={LandingPage} />
+          <Route path="/projects" Component={ProjectsPage} />
+          <Route path="/technical-writing" Component={WritingPage} />
+          <Route path="/teaching" Component={TutoringPage} />
+          <Route path="/about" Component={AboutPage} />
+          <Route path="/contact" Component={ContactPage} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
