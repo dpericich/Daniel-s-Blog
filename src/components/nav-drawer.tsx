@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Button, Drawer, Divider } from '@mui/material'
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Drawer, Divider, IconButton } from '@mui/material'
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,7 @@ import TerminalIcon from '@mui/icons-material/Terminal';
 import CreateIcon from '@mui/icons-material/Create';
 import SchoolIcon from '@mui/icons-material/School';
 import PersonIcon from '@mui/icons-material/Person';
+import MenuIcon from '@mui/icons-material/Menu'
 
 import { useState } from "react";
 
@@ -56,7 +57,7 @@ const NavDrawer = () => {
         },
         {
             title: 'Contact',
-            link: '/contacat',
+            link: '/contact',
             icon: MailIcon
         },
     ]
@@ -65,39 +66,50 @@ const NavDrawer = () => {
         <Box sx={{ width: 250 }} role="presentation" onClick={() => toggleDrawer(false)}>
             <List>
                 {topListItems.map((item, index) => (
-                    <ListItem key={item.title} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {createElement(item.icon)}
-                            </ListItemIcon>
-                            <Link to={item.link}>
+                    <Link to={item.link}>
+                        <ListItem key={item.title} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {createElement(item.icon)}
+                                </ListItemIcon>
                                 <ListItemText primary={item.title} />
-                            </Link>
-                        </ListItemButton>
-                    </ListItem>
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
                 ))}
             </List>
             <Divider />
             <List>
                 {bottomListItems.map((item, index) => (
-                    <ListItem key={item.title} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {createElement(item.icon)}
-                            </ListItemIcon>
-                            <Link to={item.link}>
+                    <Link to={item.link}>
+                        <ListItem key={item.title} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {createElement(item.icon)}
+                                </ListItemIcon>
                                 <ListItemText primary={item.title} />
-                            </Link>
-                        </ListItemButton>
-                    </ListItem>
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
                 ))}
             </List>
-        </Box>
+        </Box >
     );
 
     return (
         <div>
-            <Button onClick={() => toggleDrawer(true)}>Open drawer</Button>
+            {/*  */}
+            <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+                onClick={() => toggleDrawer(true)}
+            >
+                <MenuIcon />
+            </IconButton>
+            {/* <Button onClick={() => toggleDrawer(true)}>Open drawer</Button> */}
             <Drawer open={open} onClose={() => toggleDrawer(false)}>
                 {DrawerList}
             </Drawer>
